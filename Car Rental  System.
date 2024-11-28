@@ -57,9 +57,9 @@ insert into car values (1, 'Hyundai', '2019', 'white', 20000);
 insert into car values (2, 'Toyota', '2020', 'black', 25000);
 insert into car values (3, 'Kia', '2021', 'red', 22000);
 
-insert into user values (1, 'Aishtiaq', 'f', 'ppp@gmail.com', '0555555555', 1,20);
-insert into user values (2, 'Amjad', 'f', 'AAA@gmail.com', '0444555888', 2,30);
-insert into user values (3, 'Ali', 'm', 'mmm@gmail.com', '0598721345', 3,40);
+insert into user values (1, 'Aishtiaq', 'f', 'ppp@gmail.com', '0555555555', 1);
+insert into user values (2, 'Amjad', 'f', 'AAA@gmail.com', '0444555888', 2);
+insert into user values (3, 'Ali', 'm', 'mmm@gmail.com', '0598721345', 3);
 
 insert into orders values (1, '2024-01-01', '2024-05-01', 'Available', 80, 1, 1);
 insert into orders values (2, '2024-10-01', '2024-10-03', 'Reserved', 100, 2, 2);
