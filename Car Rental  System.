@@ -1,0 +1,96 @@
+create database company;
+USE company;
+
+-- جدول السيارات
+create table car (
+    id int primary key,
+    name varchar(20),
+    model varchar(20),
+    color varchar(10),
+    price int not null -- تم إضافة العمود المفقود
+);
+
+-- جدول المستخدمين
+create table user (
+    id int primary key,
+    name varchar(20),
+    gender char check (gender = 'm' or gender = 'f'),
+    email varchar(20),
+    phonenumber varchar(10),
+    id_order int -- تم إضافة العمود المفقود
+);
+
+-- جدول الطلبات
+create table orders (
+    id int primary key,
+    startDate datetime,
+    endDate datetime,
+    status varchar(16) check (status = 'Available' or status = 'Reserved'),
+    price int not null,
+    id_car int,
+    id_user int,
+    foreign key (id_car) references car(id),
+    foreign key (id_user) references user(id)
+);
+
+-- جدول الشركة
+create table company (
+    id int primary key,
+    startDate datetime,
+    id_user int,
+    id_car int,
+    foreign key (id_car) references car(id),
+    foreign key (id_user) references user(id)
+);
+
+-- جدول الصيانة
+create table maintenance (
+    id int primary key,
+    maintenanceHistory datetime, -- تم تعديل اسم العمود ليطابق الرسم
+    price int not null,
+    id_car int,
+    foreign key (id_car) references car(id)
+);
+
+-- إدخال البيانات
+insert into car values (1, 'Hyundai', '2019', 'white', 20000);
+insert into car values (2, 'Toyota', '2020', 'black', 25000);
+insert into car values (3, 'Kia', '2021', 'red', 22000);
+
+insert into user values (1, 'Aishtiaq', 'f', 'ppp@gmail.com', '0555555555', 1);
+insert into user values (2, 'Amjad', 'f', 'AAA@gmail.com', '0444555888', 2);
+insert into user values (3, 'Ali', 'm', 'mmm@gmail.com', '0598721345', 3);
+
+insert into orders values (1, '2024-01-01', '2024-05-01', 'Available', 80, 1, 1);
+insert into orders values (2, '2024-10-01', '2024-10-03', 'Reserved', 100, 2, 2);
+insert into orders values (3, '2024-06-01', '2024-06-01', 'Available', 70, 3, 3);
+
+insert into company values (13456, '2024-01-01', 1, 1);
+
+insert into maintenance values (1, '2024-07-01', 80, 1);
+insert into maintenance values (2, '2024-07-01', 150, 2);
+insert into maintenance values (3, '2024-07-01', 80, 3);
+
+-- عرض البيانات
+select * from car;
+select * from user;
+select * from orders;
+select * from maintenance;
+select * from company;
+
+-- تعديل البيانات
+update car set color='red' where id=1;
+update company set startDate='2024-02-02' where id=13456;
+update user set name='Majd' where id=1;
+update orders set status='Available' where id=2;
+update maintenance set price=90 where id=3;
+
+-- حذف البيانات
+delete from car where id='1';
+
+-- حذف الجدول
+DROP table maintenance;
+DROP table car;
+DROP table orders;
+DROP table company;
+DROP table user;
