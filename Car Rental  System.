@@ -7,7 +7,7 @@ create table car (
     name varchar(20),
     model varchar(20),
     color varchar(10),
-    price int not null -- تم إضافة العمود المفقود
+    price int not null 
 );
 
 -- جدول المستخدمين
@@ -17,7 +17,7 @@ create table user (
     gender char check (gender = 'm' or gender = 'f'),
     email varchar(20),
     phonenumber varchar(10),
-    id_order int -- تم إضافة العمود المفقود
+    id_order int 
 );
 
 -- جدول الطلبات
@@ -46,7 +46,7 @@ create table company (
 -- جدول الصيانة
 create table maintenance (
     id int primary key,
-    maintenanceHistory datetime, -- تم تعديل اسم العمود ليطابق الرسم
+    maintenanceHistory datetime, 
     price int not null,
     id_car int,
     foreign key (id_car) references car(id)
